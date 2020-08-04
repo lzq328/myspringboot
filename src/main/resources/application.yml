@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+#给当前springboot起个名字叫provider
+#直观的格式, spring.aplication.name, spring.datasourse.username
+spring :
+  application:
+    name: provider
+  datasource:
+    username: root
+    password: root
+    #serverTimezone=Asia/Shanghai设置时区亚洲上海,安装数据库时设置有问题,会出现时区错误问题
+    url: jdbc:mysql://localhost:3306/ssm?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    #com.mysql.cj.jdbc.Driver最新版本, com.mysql.jdbc.Driver老版本(过时了)
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #hikari数据库连接池
+    hikari:
+      #连接超时:毫秒
+      connection-timeout: 6000
+      #最大池大小
+      maximum-pool-size: 5
+
+#扫描mapping包下面的所有Mapper.xml
+mybatis:
+  mapper-locations: classpath:mapping/*Mapper.xml
